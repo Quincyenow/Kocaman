@@ -118,10 +118,7 @@ import { services } from "../../data/services";
     line-height: 1.25;
   }
 
-  .kalk__sub {
-    color: rgba(255,255,255,0.6);
-    font-size: 1rem;
-  }
+  .kalk__sub { color: rgba(255,255,255,0.6); font-size: 1rem; }
 
   .kalk__card {
     max-width: 800px;
@@ -136,17 +133,9 @@ import { services } from "../../data/services";
     align-items: start;
   }
 
-  .kalk__form {
-    display: flex;
-    flex-direction: column;
-    gap: 1.25rem;
-  }
+  .kalk__form { display: flex; flex-direction: column; gap: 1.25rem; }
 
-  .kalk__group {
-    display: flex;
-    flex-direction: column;
-    gap: 0.4rem;
-  }
+  .kalk__group { display: flex; flex-direction: column; gap: 0.4rem; }
 
   .kalk__group label {
     font-size: 0.85rem;
@@ -168,20 +157,10 @@ import { services } from "../../data/services";
     transition: border-color 0.2s;
   }
 
-  .kalk__group select:focus {
-    border-color: var(--color-accent);
-  }
+  .kalk__group select:focus { border-color: var(--color-accent); }
+  .kalk__group select option { background: var(--color-primary-dark); color: white; }
 
-  .kalk__group select option {
-    background: var(--color-primary-dark);
-    color: white;
-  }
-
-  .kalk__btn {
-    width: 100%;
-    justify-content: center;
-    padding: 0.9rem;
-  }
+  .kalk__btn { width: 100%; justify-content: center; padding: 0.9rem; }
 
   .kalk__result {
     background: rgba(255,255,255,0.04);
@@ -194,19 +173,10 @@ import { services } from "../../data/services";
     justify-content: center;
   }
 
-  .kalk__result-inner {
-    text-align: center;
-    width: 100%;
-  }
+  .kalk__result-inner { text-align: center; width: 100%; }
 
-  .kalk__result-hint {
-    color: rgba(255,255,255,0.4);
-    font-size: 0.875rem;
-  }
-
-  .kalk__error {
-    color: #f87171 !important;
-  }
+  .kalk__result-hint { color: rgba(255,255,255,0.4); font-size: 0.875rem; }
+  .kalk__error { color: #f87171 !important; }
 
   .kalk__result-label {
     font-size: 0.75rem;
@@ -231,10 +201,7 @@ import { services } from "../../data/services";
     margin-bottom: 1.5rem;
   }
 
-  .kalk__result-cta {
-    font-size: 0.875rem;
-    padding: 0.75rem 1.5rem;
-  }
+  .kalk__result-cta { font-size: 0.875rem; padding: 0.75rem 1.5rem; }
 
   .kalk__disclaimer {
     text-align: center;
@@ -247,9 +214,6 @@ import { services } from "../../data/services";
   }
 
   @media (max-width: 640px) {
-    .kalk__card {
-      grid-template-columns: 1fr;
-      padding: 1.5rem;
-    }
+    .kalk__card { grid-template-columns: 1fr; padding: 1.5rem; }
   }
 </style>
