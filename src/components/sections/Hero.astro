@@ -19,7 +19,6 @@ const marqueeRepeated = marqueeText.repeat(6);
         <a href="#leistungen" class="btn btn-outline-white">Leistungen ansehen</a>
       </div>
 
-      <!-- Lead Magnet -->
       <p class="hero__leadmagnet">{business.hero.leadMagnet}</p>
 
       <div class="hero__stats">
@@ -58,7 +57,6 @@ const marqueeRepeated = marqueeText.repeat(6);
   </div>
 </section>
 
-<!-- Marquee Banner -->
 <div class="marquee-wrap" aria-hidden="true">
   <div class="marquee-track">
     <span class="marquee-content">{marqueeRepeated}</span>
@@ -141,11 +139,7 @@ const marqueeRepeated = marqueeText.repeat(6);
     gap: 1.5rem;
   }
 
-  .hero__stat {
-    display: flex;
-    flex-direction: column;
-    gap: 0.25rem;
-  }
+  .hero__stat { display: flex; flex-direction: column; gap: 0.25rem; }
 
   .hero__stat-value {
     font-size: 1.75rem;
@@ -225,10 +219,7 @@ const marqueeRepeated = marqueeText.repeat(6);
     padding: 0.65rem 0;
   }
 
-  .marquee-track {
-    display: flex;
-    white-space: nowrap;
-  }
+  .marquee-track { display: flex; white-space: nowrap; }
 
   .marquee-content {
     display: inline-block;
