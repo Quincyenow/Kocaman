@@ -29,6 +29,13 @@ export const business = {
     nachricht: "Hallo, ich interessiere mich für Ihre Elektrodienstleistungen.",
   },
 
+  // Tawk.to Chat Widget — IDs vom Kunden eintragen nach Account-Erstellung
+  // https://www.tawk.to → Settings → Chat Widget → Direct Chat Link
+  tawkto: {
+    propertyId: "", // z.B. "64abc123def456"
+    widgetId: "",   // z.B. "1h2abc3de"
+  },
+
   stats: {
     erfahrung: "8+",
     projekte: "300+",
@@ -40,6 +47,7 @@ export const business = {
 
   hero: {
     text: "Schnell, sauber und zuverlässig. Von der klassischen Installation bis zur Smart-Home-Lösung – in Hamburg und Umgebung.",
+    leadMagnet: "✓ Kostenlose Vor-Ort-Besichtigung  ✓ Antwort in 24h garantiert",
   },
 
   ueberUns: {
@@ -48,8 +56,7 @@ export const business = {
 
   seo: {
     title: "Kocaman Elektrotechnik – Elektriker in Hamburg",
-    description:
-      "Elektroinstallation, Smart Home, Photovoltaik und Wallbox-Montage in Hamburg und Umgebung. 8+ Jahre Erfahrung, 24h Notdienst, kostenlose Beratung.",
+    description: "Elektroinstallation, Smart Home, Photovoltaik und Wallbox-Montage in Hamburg und Umgebung. 8+ Jahre Erfahrung, 24h Notdienst, kostenlose Beratung.",
     url: "https://kocaman.vercel.app",
     ogImage: "/kocaman.jpg",
     locale: "de_DE",

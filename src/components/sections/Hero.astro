@@ -13,10 +13,14 @@ const marqueeRepeated = marqueeText.repeat(6);
         Elektrotechnik,<br />die <em class="italic-highlight">wirklich</em><br />funktioniert.
       </h1>
       <p class="hero__text">{business.hero.text}</p>
+
       <div class="hero__actions">
         <a href="#kontakt" class="btn btn-primary">Jetzt Termin vereinbaren</a>
-        <a href="#leistungen" class="btn btn-outline">Leistungen ansehen</a>
+        <a href="#leistungen" class="btn btn-outline-white">Leistungen ansehen</a>
       </div>
+
+      <!-- Lead Magnet -->
+      <p class="hero__leadmagnet">{business.hero.leadMagnet}</p>
 
       <div class="hero__stats">
         <div class="hero__stat">
@@ -37,13 +41,17 @@ const marqueeRepeated = marqueeText.repeat(6);
     </div>
 
     <div class="hero__image-wrap">
-      <div class="hero__image-placeholder" role="img" aria-label="Kocaman Elektrotechnik Hamburg - Elektriker">
+      <div
+        class="hero__image-placeholder"
+        role="img"
+        aria-label={`${business.name} – Elektriker in ${business.adresse.stadt}`}
+      >
         <span class="hero__image-icon" aria-hidden="true">⚡</span>
-        <span class="hero__image-text">Kocaman Elektrotechnik</span>
-        <span class="hero__image-sub">Hamburg</span>
+        <span class="hero__image-text">{business.name}</span>
+        <span class="hero__image-sub">{business.adresse.stadt}</span>
       </div>
-      <div class="hero__badge">
-        <span class="hero__badge-dot"></span>
+      <div class="hero__badge" aria-label="24 Stunden Notdienst verfügbar">
+        <span class="hero__badge-dot" aria-hidden="true"></span>
         24h Notdienst
       </div>
     </div>
@@ -51,7 +59,7 @@ const marqueeRepeated = marqueeText.repeat(6);
 </section>
 
 <!-- Marquee Banner -->
-<div class="marquee-wrap">
+<div class="marquee-wrap" aria-hidden="true">
   <div class="marquee-track">
     <span class="marquee-content">{marqueeRepeated}</span>
   </div>
@@ -62,7 +70,7 @@ const marqueeRepeated = marqueeText.repeat(6);
     background: linear-gradient(135deg, var(--color-primary-dark) 0%, var(--color-primary) 100%);
     color: white;
     padding: 5rem 1.5rem 4rem;
-    overflow: hidden;
+    contain: layout style;
   }
 
   .hero__inner {
@@ -72,9 +80,7 @@ const marqueeRepeated = marqueeText.repeat(6);
     align-items: center;
   }
 
-  .hero__content .section-label {
-    color: var(--color-accent);
-  }
+  .hero__content .section-label { color: var(--color-accent); }
 
   .hero__h1 {
     font-family: var(--font-display);
@@ -87,28 +93,46 @@ const marqueeRepeated = marqueeText.repeat(6);
 
   .hero__text {
     font-size: 1.05rem;
-    color: rgba(255, 255, 255, 0.8);
+    color: rgba(255,255,255,0.8);
     line-height: 1.7;
     max-width: 480px;
-    margin-bottom: 2rem;
+    margin-bottom: 1.75rem;
   }
 
   .hero__actions {
     display: flex;
     gap: 1rem;
     flex-wrap: wrap;
-    margin-bottom: 2.5rem;
+    margin-bottom: 1rem;
   }
 
-  .hero__actions .btn-outline {
-    border-color: rgba(255, 255, 255, 0.4);
+  .btn-outline-white {
+    background: transparent;
     color: white;
+    border: 2px solid rgba(255,255,255,0.4);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.875rem 1.75rem;
+    border-radius: var(--radius-sm);
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-decoration: none;
+    line-height: 1;
   }
 
-  .hero__actions .btn-outline:hover {
-    background: rgba(255, 255, 255, 0.12);
+  .btn-outline-white:hover {
+    background: rgba(255,255,255,0.12);
     border-color: white;
-    color: white;
+  }
+
+  .hero__leadmagnet {
+    font-size: 0.82rem;
+    color: rgba(255,255,255,0.65);
+    margin-bottom: 2rem;
+    letter-spacing: 0.01em;
   }
 
   .hero__stats {
@@ -132,17 +156,16 @@ const marqueeRepeated = marqueeText.repeat(6);
 
   .hero__stat-label {
     font-size: 0.75rem;
-    color: rgba(255, 255, 255, 0.65);
+    color: rgba(255,255,255,0.65);
     white-space: nowrap;
   }
 
   .hero__stat-divider {
     width: 1px;
     height: 40px;
-    background: rgba(255, 255, 255, 0.2);
+    background: rgba(255,255,255,0.2);
   }
 
-  /* Image / Placeholder */
   .hero__image-wrap {
     position: relative;
     display: flex;
@@ -153,8 +176,8 @@ const marqueeRepeated = marqueeText.repeat(6);
     width: 100%;
     max-width: 440px;
     aspect-ratio: 4/3;
-    background: rgba(255, 255, 255, 0.06);
-    border: 2px dashed rgba(255, 255, 255, 0.15);
+    background: rgba(255,255,255,0.06);
+    border: 2px dashed rgba(255,255,255,0.15);
     border-radius: var(--radius);
     display: flex;
     flex-direction: column;
@@ -163,20 +186,9 @@ const marqueeRepeated = marqueeText.repeat(6);
     gap: 0.5rem;
   }
 
-  .hero__image-icon {
-    font-size: 4rem;
-  }
-
-  .hero__image-text {
-    font-weight: 700;
-    font-size: 1.1rem;
-    color: rgba(255, 255, 255, 0.8);
-  }
-
-  .hero__image-sub {
-    font-size: 0.85rem;
-    color: rgba(255, 255, 255, 0.5);
-  }
+  .hero__image-icon { font-size: 4rem; }
+  .hero__image-text { font-weight: 700; font-size: 1.1rem; color: rgba(255,255,255,0.8); }
+  .hero__image-sub { font-size: 0.85rem; color: rgba(255,255,255,0.5); }
 
   .hero__badge {
     position: absolute;
@@ -191,7 +203,7 @@ const marqueeRepeated = marqueeText.repeat(6);
     display: flex;
     align-items: center;
     gap: 0.4rem;
-    box-shadow: 0 4px 12px rgba(240, 135, 42, 0.4);
+    box-shadow: 0 4px 12px rgba(240,135,42,0.4);
   }
 
   .hero__badge-dot {
@@ -207,7 +219,6 @@ const marqueeRepeated = marqueeText.repeat(6);
     50% { opacity: 0.4; }
   }
 
-  /* Marquee */
   .marquee-wrap {
     background: var(--color-accent);
     overflow: hidden;
@@ -228,43 +239,17 @@ const marqueeRepeated = marqueeText.repeat(6);
     letter-spacing: 0.02em;
   }
 
-  /* Responsive */
   @media (max-width: 768px) {
-    .hero {
-      padding: 3rem 1.5rem 3rem;
-    }
-
-    .hero__inner {
-      grid-template-columns: 1fr;
-      gap: 2.5rem;
-    }
-
-    .hero__image-wrap {
-      order: -1;
-    }
-
-    .hero__image-placeholder {
-      max-width: 100%;
-      aspect-ratio: 16/9;
-    }
-
-    .hero__badge {
-      right: 0.5rem;
-    }
-
-    .hero__stats {
-      gap: 1rem;
-    }
+    .hero { padding: 3rem 1.5rem; }
+    .hero__inner { grid-template-columns: 1fr; gap: 2.5rem; }
+    .hero__image-wrap { order: -1; }
+    .hero__image-placeholder { max-width: 100%; aspect-ratio: 16/9; }
   }
 
   @media (max-width: 480px) {
-    .hero__actions {
-      flex-direction: column;
-    }
-
-    .hero__actions .btn {
-      text-align: center;
-      justify-content: center;
-    }
+    .hero__actions { flex-direction: column; }
+    .hero__actions .btn,
+    .hero__actions .btn-outline-white { text-align: center; justify-content: center; }
+    .hero__stats { gap: 1rem; }
   }
 </style>

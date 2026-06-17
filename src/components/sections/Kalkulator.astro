@@ -1,0 +1,255 @@
+---
+import { services } from "../../data/services";
+---
+
+<section class="kalk" id="kalkulator">
+  <div class="container">
+    <div class="kalk__header">
+      <p class="section-label">Kostenrechner</p>
+      <h2 class="kalk__h2">Was kostet mein Projekt?</h2>
+      <p class="kalk__sub">Richtwert in Sekunden – unverbindlich und kostenlos.</p>
+    </div>
+
+    <div class="kalk__card">
+      <div class="kalk__form">
+        <div class="kalk__group">
+          <label for="kalk-leistung">Welche Leistung brauchen Sie?</label>
+          <select id="kalk-leistung">
+            <option value="">Bitte wählen...</option>
+            <option value="elektroinstallation">Elektroinstallation</option>
+            <option value="beleuchtung">Beleuchtung & LED</option>
+            <option value="smarthome">Smart Home</option>
+            <option value="photovoltaik">Photovoltaik</option>
+            <option value="wallbox">Wallbox</option>
+            <option value="stoerung">Störungsdienst / Notfall</option>
+            <option value="sicherheit">Sicherheitstechnik</option>
+            <option value="gebaude">Gebäudeinstallation</option>
+          </select>
+        </div>
+
+        <div class="kalk__group">
+          <label for="kalk-groesse">Wie groß ist das Objekt?</label>
+          <select id="kalk-groesse">
+            <option value="">Bitte wählen...</option>
+            <option value="klein">Klein (1–2 Zimmer / Einzelraum)</option>
+            <option value="mittel">Mittel (3–4 Zimmer / Wohnung)</option>
+            <option value="gross">Groß (Haus / Gewerbeobjekt)</option>
+          </select>
+        </div>
+
+        <button class="btn btn-primary kalk__btn" id="kalk-berechnen" type="button">
+          Richtwert berechnen
+        </button>
+      </div>
+
+      <div class="kalk__result" id="kalk-result" aria-live="polite">
+        <div class="kalk__result-inner" id="kalk-result-inner">
+          <p class="kalk__result-hint">Wählen Sie Leistung und Objektgröße aus.</p>
+        </div>
+      </div>
+    </div>
+
+    <p class="kalk__disclaimer">
+      * Alle Angaben sind unverbindliche Richtwerte. Den genauen Preis erhalten Sie nach kostenloser Vor-Ort-Besichtigung.
+    </p>
+  </div>
+</section>
+
+<script>
+  const preise: Record<string, Record<string, { von: number; bis: number }>> = {
+    elektroinstallation: { klein: { von: 200, bis: 600 }, mittel: { von: 600, bis: 1800 }, gross: { von: 1800, bis: 5000 } },
+    beleuchtung:         { klein: { von: 150, bis: 400 }, mittel: { von: 400, bis: 1200 }, gross: { von: 1200, bis: 3500 } },
+    smarthome:           { klein: { von: 500, bis: 1500 }, mittel: { von: 1500, bis: 4000 }, gross: { von: 4000, bis: 12000 } },
+    photovoltaik:        { klein: { von: 8000, bis: 12000 }, mittel: { von: 12000, bis: 20000 }, gross: { von: 20000, bis: 50000 } },
+    wallbox:             { klein: { von: 800, bis: 1500 }, mittel: { von: 800, bis: 1500 }, gross: { von: 1500, bis: 3000 } },
+    stoerung:            { klein: { von: 120, bis: 300 }, mittel: { von: 120, bis: 300 }, gross: { von: 300, bis: 800 } },
+    sicherheit:          { klein: { von: 400, bis: 1200 }, mittel: { von: 1200, bis: 3000 }, gross: { von: 3000, bis: 8000 } },
+    gebaude:             { klein: { von: 1000, bis: 3000 }, mittel: { von: 3000, bis: 8000 }, gross: { von: 8000, bis: 25000 } },
+  };
+
+  const btn = document.getElementById("kalk-berechnen")!;
+  const resultInner = document.getElementById("kalk-result-inner")!;
+  const leistungEl = document.getElementById("kalk-leistung") as HTMLSelectElement;
+  const groesseEl = document.getElementById("kalk-groesse") as HTMLSelectElement;
+
+  btn.addEventListener("click", () => {
+    const leistung = leistungEl.value;
+    const groesse = groesseEl.value;
+
+    if (!leistung || !groesse) {
+      resultInner.innerHTML = `<p class="kalk__result-hint kalk__error">Bitte beide Felder auswählen.</p>`;
+      return;
+    }
+
+    const p = preise[leistung][groesse];
+    const vonFormatted = p.von.toLocaleString("de-DE");
+    const bisFormatted = p.bis.toLocaleString("de-DE");
+
+    resultInner.innerHTML = `
+      <p class="kalk__result-label">Geschätzter Richtwert</p>
+      <p class="kalk__result-preis">${vonFormatted} – ${bisFormatted} €</p>
+      <p class="kalk__result-note">inkl. Material & Arbeit (Netto-Richtwert)</p>
+      <a href="#kontakt" class="btn btn-primary kalk__result-cta">Kostenloses Angebot anfragen</a>
+    `;
+  });
+</script>
+
+<style>
+  .kalk {
+    padding: var(--section-pad);
+    background: var(--color-bg-dark);
+    color: white;
+  }
+
+  .kalk__header {
+    text-align: center;
+    max-width: 560px;
+    margin: 0 auto 2.5rem;
+  }
+
+  .kalk__header .section-label { color: var(--color-accent); }
+
+  .kalk__h2 {
+    font-family: var(--font-display);
+    font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+    font-weight: 700;
+    color: white;
+    margin: 0.5rem 0 1rem;
+    line-height: 1.25;
+  }
+
+  .kalk__sub {
+    color: rgba(255,255,255,0.6);
+    font-size: 1rem;
+  }
+
+  .kalk__card {
+    max-width: 800px;
+    margin: 0 auto;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: var(--radius);
+    padding: 2.5rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    align-items: start;
+  }
+
+  .kalk__form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .kalk__group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .kalk__group label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: rgba(255,255,255,0.8);
+  }
+
+  .kalk__group select {
+    padding: 0.75rem 1rem;
+    border: 1.5px solid rgba(255,255,255,0.15);
+    border-radius: var(--radius-sm);
+    font-size: 0.9rem;
+    font-family: var(--font-body);
+    color: white;
+    background: rgba(255,255,255,0.08);
+    outline: none;
+    width: 100%;
+    cursor: pointer;
+    transition: border-color 0.2s;
+  }
+
+  .kalk__group select:focus {
+    border-color: var(--color-accent);
+  }
+
+  .kalk__group select option {
+    background: var(--color-primary-dark);
+    color: white;
+  }
+
+  .kalk__btn {
+    width: 100%;
+    justify-content: center;
+    padding: 0.9rem;
+  }
+
+  .kalk__result {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: var(--radius);
+    padding: 1.75rem;
+    min-height: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .kalk__result-inner {
+    text-align: center;
+    width: 100%;
+  }
+
+  .kalk__result-hint {
+    color: rgba(255,255,255,0.4);
+    font-size: 0.875rem;
+  }
+
+  .kalk__error {
+    color: #f87171 !important;
+  }
+
+  .kalk__result-label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+    margin-bottom: 0.5rem;
+  }
+
+  .kalk__result-preis {
+    font-size: 2.25rem;
+    font-weight: 800;
+    color: white;
+    line-height: 1.1;
+    margin-bottom: 0.4rem;
+  }
+
+  .kalk__result-note {
+    font-size: 0.78rem;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 1.5rem;
+  }
+
+  .kalk__result-cta {
+    font-size: 0.875rem;
+    padding: 0.75rem 1.5rem;
+  }
+
+  .kalk__disclaimer {
+    text-align: center;
+    font-size: 0.75rem;
+    color: rgba(255,255,255,0.35);
+    margin-top: 1.5rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  @media (max-width: 640px) {
+    .kalk__card {
+      grid-template-columns: 1fr;
+      padding: 1.5rem;
+    }
+  }
+</style>
