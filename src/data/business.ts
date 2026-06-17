@@ -29,11 +29,9 @@ export const business = {
     nachricht: "Hallo, ich interessiere mich für Ihre Elektrodienstleistungen.",
   },
 
-  // Tawk.to Chat Widget — IDs vom Kunden eintragen nach Account-Erstellung
-  // https://www.tawk.to → Settings → Chat Widget → Direct Chat Link
   tawkto: {
-    propertyId: "", // z.B. "64abc123def456"
-    widgetId: "",   // z.B. "1h2abc3de"
+    propertyId: "",
+    widgetId: "",
   },
 
   stats: {
