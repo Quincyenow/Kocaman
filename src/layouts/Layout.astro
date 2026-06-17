@@ -43,12 +43,10 @@ const schemaOrg = {
     <meta name="description" content={description} />
     <link rel="canonical" href={canonicalURL} />
 
-    <!-- Performance hints -->
     <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
     <link rel="dns-prefetch" href="https://www.google.com" />
     <link rel="dns-prefetch" href="https://embed.tawk.to" />
 
-    <!-- Open Graph -->
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
@@ -56,13 +54,11 @@ const schemaOrg = {
     <meta property="og:image" content={`${business.seo.url}${business.seo.ogImage}`} />
     <meta property="og:locale" content={business.seo.locale} />
 
-    <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={`${business.seo.url}${business.seo.ogImage}`} />
 
-    <!-- Schema.org -->
     <script type="application/ld+json" set:html={JSON.stringify(schemaOrg)} />
 
     <style>
@@ -90,16 +86,9 @@ const schemaOrg = {
         --shadow-card-hover: 0 6px 28px rgba(26, 58, 92, 0.14);
       }
 
-      *, *::before, *::after {
-        box-sizing: border-box;
-        margin: 0;
-        padding: 0;
-      }
+      *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-      html {
-        scroll-behavior: smooth;
-        font-size: 16px;
-      }
+      html { scroll-behavior: smooth; font-size: 16px; }
 
       body {
         font-family: var(--font-body);
@@ -109,20 +98,11 @@ const schemaOrg = {
         -webkit-font-smoothing: antialiased;
       }
 
-      img {
-        max-width: 100%;
-        height: auto;
-        display: block;
-      }
-
+      img { max-width: 100%; height: auto; display: block; }
       a { color: inherit; text-decoration: none; }
       ul { list-style: none; }
 
-      .container {
-        max-width: var(--max-width);
-        margin: 0 auto;
-        padding: 0 1.5rem;
-      }
+      .container { max-width: var(--max-width); margin: 0 auto; padding: 0 1.5rem; }
 
       .section-label {
         display: inline-block;
@@ -193,7 +173,6 @@ const schemaOrg = {
   <body>
     <slot />
 
-    <!-- Tawk.to Chat Widget — lazy geladen nach 3s, kein Einfluss auf First Load -->
     <script is:inline define:vars={{ tawkId: business.tawkto?.propertyId, tawkKey: business.tawkto?.widgetId }}>
       if (tawkId && tawkKey) {
         window.addEventListener('load', function () {
