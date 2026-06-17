@@ -1,0 +1,137 @@
+---
+const faqs = [
+  {
+    frage: "Was kostet ein Elektriker in Hamburg?",
+    antwort: "Der Stundensatz für einen Elektriker in Hamburg liegt in der Regel zwischen 60 und 100 €/Std. netto. Für Ihr konkretes Projekt erstellen wir Ihnen kostenlos und unverbindlich einen Kostenvoranschlag – ohne versteckte Kosten.",
+  },
+  {
+    frage: "Wie schnell sind Sie verfügbar?",
+    antwort: "Bei Notfällen wie Stromausfällen sind wir 24h erreichbar und in der Regel innerhalb von 1–2 Stunden vor Ort. Für geplante Arbeiten vereinbaren wir einen Termin nach Ihrem Wunsch – oft schon innerhalb weniger Tage.",
+  },
+  {
+    frage: "Führen Sie auch kleine Reparaturen durch?",
+    antwort: "Ja, kein Auftrag ist zu klein. Von der defekten Steckdose bis zur kompletten Neuinstallation – wir übernehmen alle Elektroarbeiten für Privat- und Gewerbekunden.",
+  },
+  {
+    frage: "Benötige ich eine Genehmigung für Elektroarbeiten?",
+    antwort: "Elektrische Installationen dürfen in Deutschland nur von zugelassenen Elektrofachbetrieben durchgeführt werden. Wir kümmern uns um alle notwendigen Meldungen beim Netzbetreiber – Sie müssen sich um nichts kümmern.",
+  },
+  {
+    frage: "Installieren Sie auch Wallboxen und Photovoltaik?",
+    antwort: "Ja. Wir installieren Wallboxen für E-Fahrzeuge und Photovoltaikanlagen inkl. Anmeldung beim Netzbetreiber. Auf Wunsch beraten wir Sie kostenlos zu Fördermöglichkeiten.",
+  },
+  {
+    frage: "In welchen Stadtteilen sind Sie tätig?",
+    antwort: "Wir sind in ganz Hamburg und Umgebung tätig – Altona, Eimsbüttel, Hamburg-Mitte, Nord, Wandsbek, Harburg und die angrenzenden Landkreise. Sprechen Sie uns einfach an.",
+  },
+];
+---
+
+<section class="faq" id="faq">
+  <div class="container">
+    <div class="faq__header">
+      <p class="section-label">FAQ</p>
+      <h2 class="faq__h2">Häufige Fragen</h2>
+      <p class="faq__sub">Alles was Sie wissen müssen – kurz und klar.</p>
+    </div>
+
+    <div class="faq__list">
+      {faqs.map((item, i) => (
+        <details class="faq__item" name="faq">
+          <summary class="faq__frage">
+            <span>{item.frage}</span>
+            <span class="faq__icon" aria-hidden="true">+</span>
+          </summary>
+          <p class="faq__antwort">{item.antwort}</p>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .faq {
+    padding: var(--section-pad);
+    background: var(--color-bg);
+  }
+
+  .faq__header {
+    text-align: center;
+    max-width: 560px;
+    margin: 0 auto 3rem;
+  }
+
+  .faq__h2 {
+    font-family: var(--font-display);
+    font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+    font-weight: 700;
+    color: var(--color-primary);
+    margin: 0.5rem 0 1rem;
+    line-height: 1.25;
+  }
+
+  .faq__sub {
+    color: var(--color-text-muted);
+    font-size: 1rem;
+  }
+
+  .faq__list {
+    max-width: 760px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .faq__item {
+    background: var(--color-bg-soft);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    transition: border-color 0.2s;
+  }
+
+  .faq__item[open] {
+    border-color: var(--color-primary);
+  }
+
+  .faq__frage {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1.25rem 1.5rem;
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: var(--color-primary);
+    cursor: pointer;
+    list-style: none;
+    user-select: none;
+  }
+
+  .faq__frage::-webkit-details-marker {
+    display: none;
+  }
+
+  .faq__icon {
+    font-size: 1.4rem;
+    font-weight: 300;
+    flex-shrink: 0;
+    transition: transform 0.2s;
+    color: var(--color-accent);
+    line-height: 1;
+  }
+
+  .faq__item[open] .faq__icon {
+    transform: rotate(45deg);
+  }
+
+  .faq__antwort {
+    padding: 0 1.5rem 1.25rem;
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+    line-height: 1.8;
+    border-top: 1px solid var(--color-border);
+    padding-top: 1rem;
+  }
+</style>

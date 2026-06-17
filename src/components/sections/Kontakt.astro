@@ -18,6 +18,14 @@ import { services } from "../../data/services";
           Wir sind Ihr zuverlässiger Partner für alle {business.brancheArbeiten} in {business.adresse.stadt} und Umgebung. Füllen Sie das Formular aus – wir melden uns innerhalb von 24h zurück.
         </p>
 
+        <div class="kontakt__preishinweis">
+          <span class="kontakt__preis-icon">✅</span>
+          <div>
+            <strong>Kostenloser Kostenvoranschlag</strong>
+            <p>Kein Risiko. Wir besichtigen Ihr Projekt und geben Ihnen ein transparentes Angebot – unverbindlich und ohne versteckte Kosten.</p>
+          </div>
+        </div>
+
         <div class="kontakt__blocks">
           <div class="kontakt__block">
             <span class="kontakt__block-icon">📞</span>
@@ -133,8 +141,39 @@ import { services } from "../../data/services";
   .kontakt__intro {
     color: var(--color-text-muted);
     line-height: 1.8;
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
     font-size: 0.95rem;
+  }
+
+  .kontakt__preishinweis {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    background: #f0f9f4;
+    border: 1px solid #b8e0c8;
+    border-radius: var(--radius);
+    padding: 1rem 1.25rem;
+    margin-bottom: 1.75rem;
+  }
+
+  .kontakt__preis-icon {
+    font-size: 1.2rem;
+    flex-shrink: 0;
+    margin-top: 0.1rem;
+  }
+
+  .kontakt__preishinweis strong {
+    display: block;
+    font-size: 0.9rem;
+    color: #1a5c35;
+    margin-bottom: 0.25rem;
+  }
+
+  .kontakt__preishinweis p {
+    font-size: 0.82rem;
+    color: #2d7a4f;
+    line-height: 1.6;
+    margin: 0;
   }
 
   .kontakt__blocks {
@@ -183,7 +222,6 @@ import { services } from "../../data/services";
     flex-wrap: wrap;
   }
 
-  /* Form */
   .kontakt__form {
     display: flex;
     flex-direction: column;

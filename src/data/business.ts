@@ -24,6 +24,11 @@ export const business = {
     emailHref: "mailto:info@kocaman-elektrotechnik.com",
   },
 
+  whatsapp: {
+    nummer: "4915906399530",
+    nachricht: "Hallo, ich interessiere mich für Ihre Elektrodienstleistungen.",
+  },
+
   stats: {
     erfahrung: "8+",
     projekte: "300+",
@@ -45,26 +50,32 @@ export const business = {
     title: "Kocaman Elektrotechnik – Elektriker in Hamburg",
     description:
       "Elektroinstallation, Smart Home, Photovoltaik und Wallbox-Montage in Hamburg und Umgebung. 8+ Jahre Erfahrung, 24h Notdienst, kostenlose Beratung.",
-    url: "https://kocaman-elektrotechnik.com",
+    url: "https://kocaman.vercel.app",
     ogImage: "/kocaman.jpg",
     locale: "de_DE",
   },
 
   bewertungen: [
     {
-      name: "Mehmet A.",
-      ort: "Hamburg-Altona",
-      text: "Sehr schnelle und professionelle Arbeit. Die Elektroinstallation in unserer Wohnung wurde sauber und termingerecht erledigt. Absolute Empfehlung!",
+      name: "Verifizierter Kunde",
+      ort: "Hamburg",
+      sterne: 5,
+      text: "War sehr kurzfristig verfügbar und hat zudem sehr saubere und sehr gute Arbeit geleistet. Zuverlässig und hat noch Verbesserungsvorschläge eingebracht. Ich war sehr zufrieden mit der Arbeit von Herrn Kocaman.",
+      quelle: "MyHammer",
     },
     {
-      name: "Sabine K.",
-      ort: "Hamburg-Eimsbüttel",
-      text: "Bei unserem Stromausfall war das Team innerhalb von 2 Stunden vor Ort. Freundlich, kompetent und faire Preise. Wir kommen gerne wieder.",
+      name: "Verifizierter Kunde",
+      ort: "Hamburg",
+      sterne: 5,
+      text: "Rundum klasse Leistung. Herr Kocaman hat sehr schnell auf die Anfrage reagiert. Er ist freundlich und kompetent. Die Arbeiten wurden zur vollen Zufriedenheit ausgeführt.",
+      quelle: "MyHammer",
     },
     {
-      name: "Thomas W.",
-      ort: "Hamburg-Wandsbek",
-      text: "Die Wallbox-Installation lief reibungslos. Alles wurde sauber erklärt und der Preis war genau wie besprochen. Top Leistung!",
+      name: "Verifizierter Kunde",
+      ort: "Hamburg",
+      sterne: 5,
+      text: "Herr Kocaman ist absolut vertrauenswürdig und ehrlich. Die Arbeit wurde zügig und professionell erledigt. Sehr empfehlenswert!",
+      quelle: "MyHammer",
     },
   ],
 

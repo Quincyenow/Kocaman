@@ -15,13 +15,18 @@ import { business } from "../../data/business";
     <div class="bewertungen__grid">
       {business.bewertungen.map((b) => (
         <div class="bewertungen__card">
-          <div class="bewertungen__stars">★★★★★</div>
+          <div class="bewertungen__stars" aria-label={`${b.sterne} von 5 Sternen`}>
+            {"★".repeat(b.sterne)}
+          </div>
           <blockquote class="bewertungen__quote">
             "{b.text}"
           </blockquote>
-          <p class="bewertungen__author">
-            {b.name}, <span class="bewertungen__ort">{b.ort}</span>
-          </p>
+          <div class="bewertungen__footer">
+            <p class="bewertungen__author">
+              {b.name}, <span class="bewertungen__ort">{b.ort}</span>
+            </p>
+            <span class="bewertungen__badge">{b.quelle} ✓</span>
+          </div>
         </div>
       ))}
     </div>
@@ -91,6 +96,14 @@ import { business } from "../../data/business";
     flex: 1;
   }
 
+  .bewertungen__footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+
   .bewertungen__author {
     font-size: 0.85rem;
     font-weight: 700;
@@ -100,6 +113,16 @@ import { business } from "../../data/business";
   .bewertungen__ort {
     font-weight: 400;
     color: var(--color-text-muted);
+  }
+
+  .bewertungen__badge {
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: #2d7a4f;
+    background: #e8f5ee;
+    padding: 0.2rem 0.6rem;
+    border-radius: 2rem;
+    white-space: nowrap;
   }
 
   @media (max-width: 768px) {
