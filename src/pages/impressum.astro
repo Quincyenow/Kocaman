@@ -1,0 +1,97 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
+import { business } from "../data/business";
+---
+
+<Layout
+  title={`Impressum – ${business.name}`}
+  description={`Impressum von ${business.name} in ${business.adresse.stadt}.`}
+>
+  <Navbar />
+  <main class="legal-page">
+    <div class="container legal-inner">
+      <h1>Impressum</h1>
+
+      <h2>Angaben gemäß § 5 TMG</h2>
+      <p>
+        {business.impressum.inhaber}<br />
+        {business.impressum.strasse}<br />
+        {business.impressum.plzStadt}
+      </p>
+
+      <h2>Kontakt</h2>
+      <p>
+        Telefon: <a href={business.kontakt.telefonHref}>{business.kontakt.telefon}</a><br />
+        E-Mail: <a href={business.kontakt.emailHref}>{business.kontakt.email}</a>
+      </p>
+
+      <h2>Umsatzsteuer-ID</h2>
+      <p>
+        Umsatzsteuer-Identifikationsnummer gemäß § 27 a Umsatzsteuergesetz:<br />
+        {business.impressum.ustId}
+      </p>
+
+      <h2>Haftungsausschluss</h2>
+      <p>
+        Die Inhalte unserer Seiten wurden mit größter Sorgfalt erstellt. Für die Richtigkeit,
+        Vollständigkeit und Aktualität der Inhalte können wir jedoch keine Gewähr übernehmen.
+        Als Diensteanbieter sind wir gemäß § 7 Abs.1 TMG für eigene Inhalte auf diesen Seiten
+        nach den allgemeinen Gesetzen verantwortlich.
+      </p>
+
+      <p>
+        <a href="/" class="back-link">← Zurück zur Startseite</a>
+      </p>
+    </div>
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  .legal-page {
+    padding: 5rem 1.5rem;
+    min-height: 60vh;
+    background: var(--color-bg-soft);
+  }
+
+  .legal-inner {
+    max-width: 720px;
+  }
+
+  .legal-inner h1 {
+    font-family: var(--font-display);
+    font-size: 2.25rem;
+    color: var(--color-primary);
+    margin-bottom: 2rem;
+  }
+
+  .legal-inner h2 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    margin: 2rem 0 0.5rem;
+  }
+
+  .legal-inner p {
+    color: var(--color-text-muted);
+    line-height: 1.8;
+    margin-bottom: 1rem;
+  }
+
+  .legal-inner a {
+    color: var(--color-accent);
+  }
+
+  .legal-inner a:hover {
+    text-decoration: underline;
+  }
+
+  .back-link {
+    display: inline-block;
+    margin-top: 2rem;
+    font-weight: 600;
+    font-size: 0.9rem;
+  }
+</style>

@@ -1,0 +1,179 @@
+---
+import { business } from "../data/business";
+---
+
+<header class="navbar" id="navbar">
+  <div class="container navbar__inner">
+    <a href="/" class="navbar__logo">
+      <span class="navbar__logo-emoji">{business.emoji}</span>
+      <span class="navbar__logo-text">{business.name}</span>
+    </a>
+
+    <nav class="navbar__links" id="navLinks">
+      <a href="#leistungen">Leistungen</a>
+      <a href="#prozess">Ablauf</a>
+      <a href="#bewertungen">Bewertungen</a>
+      <a href="#kontakt">Kontakt</a>
+      <a href="#kontakt" class="btn btn-primary navbar__cta">Termin anfragen</a>
+    </nav>
+
+    <button class="navbar__hamburger" id="hamburger" aria-label="Menü öffnen" aria-expanded="false">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div class="navbar__mobile" id="mobileMenu">
+    <a href="#leistungen">Leistungen</a>
+    <a href="#prozess">Ablauf</a>
+    <a href="#bewertungen">Bewertungen</a>
+    <a href="#kontakt">Kontakt</a>
+    <a href="#kontakt" class="btn btn-primary">Jetzt Termin vereinbaren</a>
+  </div>
+</header>
+
+<script>
+  const hamburger = document.getElementById("hamburger")!;
+  const mobileMenu = document.getElementById("mobileMenu")!;
+  const navbar = document.getElementById("navbar")!;
+  const mobileLinks = mobileMenu.querySelectorAll("a");
+
+  hamburger.addEventListener("click", () => {
+    const isOpen = mobileMenu.classList.toggle("open");
+    hamburger.setAttribute("aria-expanded", String(isOpen));
+  });
+
+  mobileLinks.forEach((link) => {
+    link.addEventListener("click", () => {
+      mobileMenu.classList.remove("open");
+      hamburger.setAttribute("aria-expanded", "false");
+    });
+  });
+
+  // Navbar scroll shadow
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 20) {
+      navbar.classList.add("scrolled");
+    } else {
+      navbar.classList.remove("scrolled");
+    }
+  });
+</script>
+
+<style>
+  .navbar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(255, 255, 255, 0.97);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--color-border);
+    transition: box-shadow 0.2s;
+  }
+
+  .navbar.scrolled {
+    box-shadow: 0 2px 20px rgba(26, 58, 92, 0.1);
+  }
+
+  .navbar__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 68px;
+    gap: 2rem;
+  }
+
+  .navbar__logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--color-primary);
+    white-space: nowrap;
+  }
+
+  .navbar__logo-emoji {
+    font-size: 1.3rem;
+  }
+
+  .navbar__links {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .navbar__links a:not(.btn) {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--color-text-muted);
+    transition: color 0.2s;
+  }
+
+  .navbar__links a:not(.btn):hover {
+    color: var(--color-primary);
+  }
+
+  .navbar__cta {
+    padding: 0.6rem 1.25rem;
+    font-size: 0.875rem;
+  }
+
+  .navbar__hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.25rem;
+  }
+
+  .navbar__hamburger span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--color-primary);
+    transition: all 0.25s;
+    border-radius: 2px;
+  }
+
+  .navbar__mobile {
+    display: none;
+    flex-direction: column;
+    gap: 0;
+    background: white;
+    border-top: 1px solid var(--color-border);
+    padding: 1rem 1.5rem 1.5rem;
+  }
+
+  .navbar__mobile a:not(.btn) {
+    padding: 0.875rem 0;
+    font-weight: 500;
+    color: var(--color-text);
+    border-bottom: 1px solid var(--color-border);
+    display: block;
+  }
+
+  .navbar__mobile .btn {
+    margin-top: 1rem;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .navbar__mobile.open {
+    display: flex;
+  }
+
+  @media (max-width: 768px) {
+    .navbar__links {
+      display: none;
+    }
+
+    .navbar__hamburger {
+      display: flex;
+    }
+  }
+</style>

@@ -1,0 +1,137 @@
+---
+import { business } from "../../data/business";
+---
+
+<section class="ueber" id="ueber">
+  <div class="container ueber__inner">
+    <div class="ueber__text">
+      <p class="section-label">Über uns</p>
+      <h2 class="ueber__h2">
+        Gemeinsam denken wir Elektrotechnik <em class="italic-highlight">neu</em>
+      </h2>
+      <p class="ueber__body">{business.ueberUns.text}</p>
+      <a href="#kontakt" class="ueber__link">
+        Kostenloses Angebot anfordern →
+      </a>
+    </div>
+
+    <div class="ueber__stats">
+      <div class="ueber__stat-card">
+        <span class="ueber__stat-value">{business.stats.erfahrung}</span>
+        <span class="ueber__stat-label">Jahre Erfahrung</span>
+      </div>
+      <div class="ueber__stat-card">
+        <span class="ueber__stat-value">{business.stats.projekte}</span>
+        <span class="ueber__stat-label">Abgeschlossene Projekte</span>
+      </div>
+      <div class="ueber__stat-card">
+        <span class="ueber__stat-value">{business.stats.erreichbar}</span>
+        <span class="ueber__stat-label">Erreichbar</span>
+      </div>
+      <div class="ueber__stat-card">
+        <span class="ueber__stat-value">{business.stats.zufriedenheit}</span>
+        <span class="ueber__stat-label">Kundenzufriedenheit</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .ueber {
+    padding: var(--section-pad);
+    background: var(--color-bg-soft);
+  }
+
+  .ueber__inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+
+  .ueber__h2 {
+    font-family: var(--font-display);
+    font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+    font-weight: 700;
+    line-height: 1.25;
+    color: var(--color-primary);
+    margin: 0.5rem 0 1.25rem;
+  }
+
+  .ueber__body {
+    color: var(--color-text-muted);
+    line-height: 1.8;
+    margin-bottom: 1.5rem;
+    font-size: 1rem;
+  }
+
+  .ueber__link {
+    font-weight: 700;
+    color: var(--color-accent);
+    font-size: 0.95rem;
+    transition: gap 0.2s;
+    display: inline-block;
+  }
+
+  .ueber__link:hover {
+    color: var(--color-accent-dark);
+    text-decoration: underline;
+  }
+
+  .ueber__stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  .ueber__stat-card {
+    background: white;
+    border-radius: var(--radius);
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    box-shadow: var(--shadow-card);
+    border: 1px solid var(--color-border);
+    transition: box-shadow 0.2s;
+  }
+
+  .ueber__stat-card:hover {
+    box-shadow: var(--shadow-card-hover);
+  }
+
+  .ueber__stat-value {
+    font-size: 2.25rem;
+    font-weight: 800;
+    color: var(--color-primary);
+    line-height: 1;
+  }
+
+  .ueber__stat-label {
+    font-size: 0.8rem;
+    color: var(--color-text-muted);
+    font-weight: 500;
+  }
+
+  @media (max-width: 768px) {
+    .ueber__inner {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .ueber__stats {
+      grid-template-columns: 1fr 1fr;
+      gap: 0.75rem;
+    }
+
+    .ueber__stat-card {
+      padding: 1.25rem 1rem;
+    }
+
+    .ueber__stat-value {
+      font-size: 1.75rem;
+    }
+  }
+</style>

@@ -1,0 +1,110 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
+import { business } from "../data/business";
+---
+
+<Layout
+  title={`Datenschutz – ${business.name}`}
+  description={`Datenschutzerklärung von ${business.name}.`}
+>
+  <Navbar />
+  <main class="legal-page">
+    <div class="container legal-inner">
+      <h1>Datenschutzerklärung</h1>
+
+      <h2>1. Datenschutz auf einen Blick</h2>
+      <p>
+        Die folgenden Hinweise geben einen einfachen Überblick darüber, was mit Ihren
+        personenbezogenen Daten passiert, wenn Sie unsere Website besuchen. Personenbezogene
+        Daten sind alle Daten, mit denen Sie persönlich identifiziert werden können.
+      </p>
+
+      <h2>2. Verantwortliche Stelle</h2>
+      <p>
+        {business.name}<br />
+        {business.adresse.strasse}<br />
+        {business.adresse.plz} {business.adresse.stadt}<br />
+        Telefon: {business.kontakt.telefon}<br />
+        E-Mail: {business.kontakt.email}
+      </p>
+
+      <h2>3. Datenerfassung auf unserer Website</h2>
+      <p>
+        <strong>Kontaktformular:</strong> Wenn Sie uns per Kontaktformular Anfragen zukommen lassen,
+        werden Ihre Angaben aus dem Anfrageformular inklusive der von Ihnen dort angegebenen
+        Kontaktdaten zwecks Bearbeitung der Anfrage und für den Fall von Anschlussfragen bei
+        uns gespeichert. Diese Daten geben wir nicht ohne Ihre Einwilligung weiter.
+      </p>
+
+      <h2>4. Server-Log-Dateien</h2>
+      <p>
+        Der Provider der Seiten erhebt und speichert automatisch Informationen in so genannten
+        Server-Log-Dateien, die Ihr Browser automatisch an uns übermittelt. Dies sind unter anderem
+        Browsertyp, Betriebssystem, Referrer URL und die IP-Adresse des zugreifenden Rechners.
+        Eine Zusammenführung dieser Daten mit anderen Datenquellen wird nicht vorgenommen.
+      </p>
+
+      <h2>5. Ihre Rechte</h2>
+      <p>
+        Sie haben jederzeit das Recht auf unentgeltliche Auskunft über Ihre gespeicherten
+        personenbezogenen Daten, deren Herkunft und Empfänger und den Zweck der Datenverarbeitung
+        sowie ein Recht auf Berichtigung oder Löschung dieser Daten. Hierzu sowie zu weiteren
+        Fragen zum Thema Datenschutz können Sie sich jederzeit an uns wenden.
+      </p>
+
+      <p>
+        <a href="/" class="back-link">← Zurück zur Startseite</a>
+      </p>
+    </div>
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  .legal-page {
+    padding: 5rem 1.5rem;
+    min-height: 60vh;
+    background: var(--color-bg-soft);
+  }
+
+  .legal-inner {
+    max-width: 720px;
+  }
+
+  .legal-inner h1 {
+    font-family: var(--font-display);
+    font-size: 2.25rem;
+    color: var(--color-primary);
+    margin-bottom: 2rem;
+  }
+
+  .legal-inner h2 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    margin: 2rem 0 0.5rem;
+  }
+
+  .legal-inner p {
+    color: var(--color-text-muted);
+    line-height: 1.8;
+    margin-bottom: 1rem;
+  }
+
+  .legal-inner a {
+    color: var(--color-accent);
+  }
+
+  .legal-inner a:hover {
+    text-decoration: underline;
+  }
+
+  .back-link {
+    display: inline-block;
+    margin-top: 2rem;
+    font-weight: 600;
+    font-size: 0.9rem;
+  }
+</style>

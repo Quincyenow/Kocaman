@@ -1,0 +1,77 @@
+---
+import { business } from "../data/business";
+
+const year = new Date().getFullYear();
+---
+
+<footer class="footer">
+  <div class="container footer__inner">
+    <div class="footer__left">
+      <a href="/" class="footer__logo">
+        <span>{business.emoji}</span>
+        <span>{business.name}</span>
+      </a>
+      <p class="footer__copy">
+        © {year} {business.name} | {business.adresse.stadt}
+      </p>
+    </div>
+
+    <nav class="footer__links">
+      <a href="/impressum/">Impressum</a>
+      <a href="/datenschutz/">Datenschutz</a>
+    </nav>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    background: var(--color-primary-dark);
+    padding: 2rem 1.5rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+  }
+
+  .footer__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+  }
+
+  .footer__logo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 700;
+    color: white;
+    font-size: 1rem;
+    margin-bottom: 0.4rem;
+  }
+
+  .footer__copy {
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.45);
+  }
+
+  .footer__links {
+    display: flex;
+    gap: 1.5rem;
+  }
+
+  .footer__links a {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.55);
+    transition: color 0.2s;
+  }
+
+  .footer__links a:hover {
+    color: white;
+  }
+
+  @media (max-width: 480px) {
+    .footer__inner {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+</style>

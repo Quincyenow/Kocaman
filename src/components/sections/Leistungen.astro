@@ -1,0 +1,107 @@
+---
+import { services } from "../../data/services";
+---
+
+<section class="leistungen" id="leistungen">
+  <div class="container">
+    <div class="leistungen__header">
+      <p class="section-label">Leistungen</p>
+      <h2 class="leistungen__h2">Alles aus einer Hand</h2>
+      <p class="leistungen__sub">
+        Von der Planung bis zur Fertigstellung – wir sind Ihr kompetenter Ansprechpartner.
+      </p>
+    </div>
+
+    <div class="leistungen__grid">
+      {services.map((service) => (
+        <div class="leistungen__card">
+          <span class="leistungen__card-emoji">{service.emoji}</span>
+          <h3 class="leistungen__card-name">{service.name}</h3>
+          <p class="leistungen__card-desc">{service.beschreibung}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .leistungen {
+    padding: var(--section-pad);
+    background: var(--color-bg);
+  }
+
+  .leistungen__header {
+    text-align: center;
+    max-width: 560px;
+    margin: 0 auto 3rem;
+  }
+
+  .leistungen__h2 {
+    font-family: var(--font-display);
+    font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+    font-weight: 700;
+    color: var(--color-primary);
+    margin: 0.5rem 0 1rem;
+    line-height: 1.25;
+  }
+
+  .leistungen__sub {
+    color: var(--color-text-muted);
+    font-size: 1rem;
+    line-height: 1.7;
+  }
+
+  .leistungen__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.25rem;
+  }
+
+  .leistungen__card {
+    background: var(--color-bg-soft);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius);
+    padding: 1.75rem 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    transition: all 0.2s ease;
+    cursor: default;
+  }
+
+  .leistungen__card:hover {
+    border-color: var(--color-accent);
+    box-shadow: var(--shadow-card-hover);
+    transform: translateY(-2px);
+  }
+
+  .leistungen__card-emoji {
+    font-size: 2rem;
+    line-height: 1;
+  }
+
+  .leistungen__card-name {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--color-primary);
+    line-height: 1.3;
+  }
+
+  .leistungen__card-desc {
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+    line-height: 1.6;
+  }
+
+  @media (max-width: 900px) {
+    .leistungen__grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 480px) {
+    .leistungen__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

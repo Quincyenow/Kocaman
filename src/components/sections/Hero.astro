@@ -1,0 +1,270 @@
+---
+import { business } from "../../data/business";
+
+const marqueeText = `24h erreichbar • ${business.kontakt.telefon} • ${business.einsatzgebiet} • ${business.kontakt.email} • Kostenlose Beratung • `;
+const marqueeRepeated = marqueeText.repeat(6);
+---
+
+<section class="hero">
+  <div class="container hero__inner">
+    <div class="hero__content">
+      <p class="section-label">{business.subheading}</p>
+      <h1 class="hero__h1">
+        Elektrotechnik,<br />die <em class="italic-highlight">wirklich</em><br />funktioniert.
+      </h1>
+      <p class="hero__text">{business.hero.text}</p>
+      <div class="hero__actions">
+        <a href="#kontakt" class="btn btn-primary">Jetzt Termin vereinbaren</a>
+        <a href="#leistungen" class="btn btn-outline">Leistungen ansehen</a>
+      </div>
+
+      <div class="hero__stats">
+        <div class="hero__stat">
+          <span class="hero__stat-value">{business.stats.erfahrung}</span>
+          <span class="hero__stat-label">Jahre Erfahrung</span>
+        </div>
+        <div class="hero__stat-divider"></div>
+        <div class="hero__stat">
+          <span class="hero__stat-value">{business.stats.projekte}</span>
+          <span class="hero__stat-label">Projekte</span>
+        </div>
+        <div class="hero__stat-divider"></div>
+        <div class="hero__stat">
+          <span class="hero__stat-value">{business.stats.erreichbar}</span>
+          <span class="hero__stat-label">Erreichbar</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero__image-wrap">
+      <div class="hero__image-placeholder">
+        <span class="hero__image-icon">⚡</span>
+        <span class="hero__image-text">Kocaman Elektrotechnik</span>
+        <span class="hero__image-sub">Hamburg</span>
+      </div>
+      <div class="hero__badge">
+        <span class="hero__badge-dot"></span>
+        24h Notdienst
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Marquee Banner -->
+<div class="marquee-wrap">
+  <div class="marquee-track">
+    <span class="marquee-content">{marqueeRepeated}</span>
+  </div>
+</div>
+
+<style>
+  .hero {
+    background: linear-gradient(135deg, var(--color-primary-dark) 0%, var(--color-primary) 100%);
+    color: white;
+    padding: 5rem 1.5rem 4rem;
+    overflow: hidden;
+  }
+
+  .hero__inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+
+  .hero__content .section-label {
+    color: var(--color-accent);
+  }
+
+  .hero__h1 {
+    font-family: var(--font-display);
+    font-size: clamp(2.2rem, 5vw, 3.4rem);
+    font-weight: 700;
+    line-height: 1.15;
+    margin: 0.75rem 0 1.25rem;
+    color: white;
+  }
+
+  .hero__text {
+    font-size: 1.05rem;
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.7;
+    max-width: 480px;
+    margin-bottom: 2rem;
+  }
+
+  .hero__actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 2.5rem;
+  }
+
+  .hero__actions .btn-outline {
+    border-color: rgba(255, 255, 255, 0.4);
+    color: white;
+  }
+
+  .hero__actions .btn-outline:hover {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: white;
+    color: white;
+  }
+
+  .hero__stats {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  .hero__stat {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .hero__stat-value {
+    font-size: 1.75rem;
+    font-weight: 800;
+    color: var(--color-accent);
+    line-height: 1;
+  }
+
+  .hero__stat-label {
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.65);
+    white-space: nowrap;
+  }
+
+  .hero__stat-divider {
+    width: 1px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.2);
+  }
+
+  /* Image / Placeholder */
+  .hero__image-wrap {
+    position: relative;
+    display: flex;
+    justify-content: center;
+  }
+
+  .hero__image-placeholder {
+    width: 100%;
+    max-width: 440px;
+    aspect-ratio: 4/3;
+    background: rgba(255, 255, 255, 0.06);
+    border: 2px dashed rgba(255, 255, 255, 0.15);
+    border-radius: var(--radius);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+
+  .hero__image-icon {
+    font-size: 4rem;
+  }
+
+  .hero__image-text {
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: rgba(255, 255, 255, 0.8);
+  }
+
+  .hero__image-sub {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.5);
+  }
+
+  .hero__badge {
+    position: absolute;
+    bottom: -0.75rem;
+    right: 1rem;
+    background: var(--color-accent);
+    color: white;
+    font-size: 0.8rem;
+    font-weight: 700;
+    padding: 0.4rem 1rem;
+    border-radius: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    box-shadow: 0 4px 12px rgba(240, 135, 42, 0.4);
+  }
+
+  .hero__badge-dot {
+    width: 8px;
+    height: 8px;
+    background: white;
+    border-radius: 50%;
+    animation: pulse 1.5s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.4; }
+  }
+
+  /* Marquee */
+  .marquee-wrap {
+    background: var(--color-accent);
+    overflow: hidden;
+    padding: 0.65rem 0;
+  }
+
+  .marquee-track {
+    display: flex;
+    white-space: nowrap;
+  }
+
+  .marquee-content {
+    display: inline-block;
+    animation: marquee 30s linear infinite;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: white;
+    letter-spacing: 0.02em;
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .hero {
+      padding: 3rem 1.5rem 3rem;
+    }
+
+    .hero__inner {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
+
+    .hero__image-wrap {
+      order: -1;
+    }
+
+    .hero__image-placeholder {
+      max-width: 100%;
+      aspect-ratio: 16/9;
+    }
+
+    .hero__badge {
+      right: 0.5rem;
+    }
+
+    .hero__stats {
+      gap: 1rem;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .hero__actions {
+      flex-direction: column;
+    }
+
+    .hero__actions .btn {
+      text-align: center;
+      justify-content: center;
+    }
+  }
+</style>
